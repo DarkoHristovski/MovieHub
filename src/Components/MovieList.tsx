@@ -1,6 +1,6 @@
-import type { Movie } from "./Movies";
+import type { Movie } from "../types/Movie";
 type MovieProps = {
-    movies: Movie[]; // vo React props obično koristime lowercase
+    movies: Movie; // vo React props obično koristime lowercase
   };
 const MovieList= ({movies}:MovieProps)=>{
 return (
@@ -8,14 +8,18 @@ return (
       {/* Poster */}
       <img
         className="w-full h-64 object-cover"
-        src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+        src={
+          movies.poster_path?
+          `https://image.tmdb.org/t/p/w500${movies.poster_path}`
+          : "/placeholder.jpg"
+        
+        }
         alt={movies.title}
       />
 
       {/* Content */}
       <div className="p-4">
         <h2 className="text-lg font-bold text-gray-800">{movies.title}</h2>
-        <p className="text-sm text-gray-500 mb-2">{movies.release_date}</p>
         <p className="text-yellow-500 font-semibold mb-2">
           ⭐ {movies.vote_average ?? "N/A"}
         </p>
