@@ -2,20 +2,29 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import * as movieService from '../src/Services/MovieServices';
 import Movies from '../src/Components/Movies'
-import type { Movie } from './Components/Movies'; // ili gde go imas definiran tipot
-
+import type { Movie } from './types/Movie'; 
+import Hero  from './Components/Hero';
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(()=>{
-    movieService.allMovie()
-    .then(res=>setMovies(res.results));
+    const loadMovies = async () =>{
+      const res = await movieService.allMovie();
+
+      if(!res) return ;
+      setMovies(res.results);
+    };
+   
+    loadMovies();
   },[])
   
+
+  console.log(movies)
  
   return (
     <>
+    <Hero movies={movies}/>
 <Movies movies={movies}/>
 
     </>
