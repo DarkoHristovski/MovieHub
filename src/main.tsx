@@ -1,10 +1,11 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'  // <-- ОВА Е КЛУЧНО
+import './index.css'  //
 
 createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
 )
