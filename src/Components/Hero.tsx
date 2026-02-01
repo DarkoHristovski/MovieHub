@@ -20,6 +20,9 @@ const Hero = ({movies}:HeroProps) =>{
                   : "/placeholder.jpg"
                 } alt="" />
                 
+                <div>
+                    
+                </div>
             </section>
 )
 

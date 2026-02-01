@@ -1,9 +1,15 @@
 import type { Movie } from "../types/Movie";
+import { Link } from "react-router-dom";
+
+
 type MovieProps = {
-    movies: Movie; // vo React props obično koristime lowercase
-  };
+    movies: Movie; 
+}
+
+
 const MovieList= ({movies}:MovieProps)=>{
 return (
+  <Link to={`movies/${movies.id}`}>
 <div className="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transform transition-all duration-300">
       {/* Poster */}
       <img
@@ -28,7 +34,7 @@ return (
         </p>
       </div>
     </div>
-
+    </Link>
 )
 }
 
