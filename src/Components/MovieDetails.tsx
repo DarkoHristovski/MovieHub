@@ -36,7 +36,7 @@ console.log(trailer)
         } alt="" />
         
         <div className="w-[70%] h-[500px] object-cover rounded-lg shadow-lg">
-        <iframe className="rounded-lg shadow-lg" width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe className="rounded-lg shadow-lg" width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </div>
         </div>
 <section className="max-w-[1280px] mx-auto px-4 mt-10">
@@ -59,7 +59,7 @@ console.log(trailer)
         <p>Cast</p>
 <ul className="flex items-center flex-wrap gap-2">
     {actors.map(x=>{
-        return <li className="grow rounded-[15px]">
+        return <li key={x.original_name} className="grow rounded-[15px]">
             <img className="object-cover h-[130px] w-[100%] rounded-[6px]" src={`https://image.tmdb.org/t/p/w500${x.profile_path}`} alt="" />
             <p>{x.original_name}</p>
            
