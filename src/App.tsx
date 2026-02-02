@@ -16,11 +16,17 @@ function App() {
 
 
   useEffect(()=>{
+   
+    movieService.discoverMovie(category, selectedGenres)
+    .then(res=>setMovies(res.results))
+
+
     movieService.getMoviesByCategories(category)
     .then(res => setMovies(res.results));
 
     movieService.getGenres()
-    .then(res=>setGenres(res))
+    .then(res=>setGenres(res.genres))
+    
     const loadMovies = async () =>{
       const res = await movieService.allMovie();
 
@@ -30,13 +36,13 @@ function App() {
 
    
     loadMovies();
-  },[category])
+  },[category, selectedGenres])
 
   console.log(genres)
   return (
     <>
 <Routes>
-<Route path="/" element={<Home movies={movies} category={category} setCategory={setCategory}/>}/>
+<Route path="/" element={<Home genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} movies={movies} category={category} setCategory={setCategory}/>}/>
 <Route path='/movies/:movieId' element={<MovieDetails/>}/>
 </Routes>
 

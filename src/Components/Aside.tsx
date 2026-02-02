@@ -1,4 +1,5 @@
-import { MovieCategory } from "../types/Movie";
+import { MovieCategory} from "../types/Movie";
+import type { Genre } from '../types/Movie';
 
 type CategoryItem ={
 label:string,
@@ -7,11 +8,15 @@ value:MovieCategory
 
 type AsideProps ={
     category:MovieCategory,
-    setCategory:(cat:MovieCategory)=>void
+    setCategory:(cat:MovieCategory)=>void,
+    genres:Genre[],
+    selectedGenres:number[];
+    setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
+
 }
 
-const Aside = ({category, setCategory}:AsideProps) =>{
-    
+const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres}:AsideProps) =>{
+  
     const movieCategories: CategoryItem[]=[
         {
     label:"Popular",
@@ -26,6 +31,17 @@ const Aside = ({category, setCategory}:AsideProps) =>{
           value:MovieCategory.Upcoming,
         }
       ]
+
+      const toggleGenre = (id:number)=>{
+        setSelectedGenres(prev=>
+            prev.includes(id)
+            ? prev.filter(g=>g !== id)
+            : [...prev, id]
+        );
+
+      }
+
+
 
     return(
         <>
@@ -55,6 +71,22 @@ const Aside = ({category, setCategory}:AsideProps) =>{
 )}
 
 </div>
+<div className="flex flex-wrap gap-2">
+      {genres.map(g => (
+        <button
+          key={g.id}
+          onClick={() => toggleGenre(g.id)}
+          className={`
+            px-3 py-1 rounded-full text-sm
+            ${selectedGenres.includes(g.id)
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-700"}
+          `}
+        >
+          {g.name}
+        </button>
+      ))}
+    </div>
 </>
 
     )
