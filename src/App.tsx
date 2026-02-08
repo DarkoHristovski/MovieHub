@@ -9,40 +9,39 @@ import MovieDetails from '../src/Components/MovieDetails'
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [category, setCategory] = useState<MovieCategory>(MovieCategory.Popular);
+  const [category, setCategory] = useState<MovieCategory>(MovieCategory.TopRated);
   const [genres, setGenres]=useState<Genre[]>([])
   const [selectedGenres, setSelectedGenres] = useState<number[]>([])
-
-
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
 
   useEffect(()=>{
    
-    movieService.discoverMovie(category, selectedGenres)
-    .then(res=>setMovies(res.results))
-
-
-    movieService.getMoviesByCategories(category)
-    .then(res => setMovies(res.results));
-
-    movieService.getGenres()
-    .then(res=>setGenres(res.genres))
-    
     const loadMovies = async () =>{
-      const res = await movieService.allMovie();
+      const res = await movieService.getMoviesByCategories(category,page);
 
       if(!res) return ;
       setMovies(res.results);
+      setTotalPages(res.total_pages);
     };
-
-   
     loadMovies();
-  },[category, selectedGenres])
+  },[category,page])
 
-  console.log(genres)
+  console.log(page)
+  
   return (
     <>
 <Routes>
-<Route path="/" element={<Home genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} movies={movies} category={category} setCategory={setCategory}/>}/>
+<Route path="/" element={<Home
+ setPage={setPage}
+ page={page}
+  genres={genres}
+  selectedGenres={selectedGenres}
+   setSelectedGenres={setSelectedGenres}
+    movies={movies} category={category}
+     setCategory={setCategory}/>}
+     
+     />
 <Route path='/movies/:movieId' element={<MovieDetails/>}/>
 </Routes>
 
