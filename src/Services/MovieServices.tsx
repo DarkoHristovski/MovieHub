@@ -1,6 +1,7 @@
 import type { Movie, MovieCategory } from '../types/Movie';
 import type {MovieResponse} from '../types/Movie';
 
+
 const options = {
     method: 'GET',
     headers: {
@@ -48,19 +49,18 @@ console.log(error)
 
 }
 
-
-
-export const getMoviesByCategories = async(category:string) =>{
-
+export const getMoviesByCategories = async(category:MovieCategory, page:number) =>{
+ 
 try{
-  const response = await fetch(`${baseUrl}/movie/${category}?language=en-US&page=1`,
+
+  const response = await fetch(`${baseUrl}/movie/${category}?language=en-US&page=${page}`,
     options);
 
    if(!response.ok){
     throw new Error('Failed')
    }
 
-   const result = response.json();
+   const result = await response.json();
 
 return result;
 }catch(error){

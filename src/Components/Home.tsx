@@ -11,17 +11,19 @@ type HomeProps = {
     genres: Genre[];
     selectedGenres: number[];
     setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
+    page:number
   };
   
 
 
-const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres}:HomeProps) =>{
+const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page}:HomeProps) =>{
 return(
     <div>
     <Aside genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} category={category} setCategory={setCategory} />
     <main>
         <Hero movies={movies}/>
-        <Movies movies={movies}/>
+        <Movies movies={movies} page={page} setPage={setPage}/>
     </main>
     
     </div>
