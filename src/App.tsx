@@ -18,16 +18,29 @@ function App() {
   useEffect(()=>{
    
     const loadMovies = async () =>{
-      const res = await movieService.getMoviesByCategories(category,page);
+      const res = await movieService.getMovies(category,page, selectedGenres);
 
       if(!res) return ;
       setMovies(res.results);
       setTotalPages(res.total_pages);
     };
     loadMovies();
-  },[category,page])
+  },[category,page,selectedGenres])
 
-  console.log(page)
+  useEffect(() => {
+    const loadGenres = async () => {
+      const res = await movieService.getGenres();
+      if (!res) return;
+      setGenres(res.genres);
+    };
+  
+    loadGenres();
+  }, []);
+
+  const handleCategoryChange = (cat: MovieCategory) => {
+    setCategory(cat);
+    setPage(1);
+  };
   
   return (
     <>
@@ -35,11 +48,12 @@ function App() {
 <Route path="/" element={<Home
  setPage={setPage}
  page={page}
-  genres={genres}
-  selectedGenres={selectedGenres}
-   setSelectedGenres={setSelectedGenres}
-    movies={movies} category={category}
-     setCategory={setCategory}/>}
+ genres={genres}
+ setHandleCategory={handleCategoryChange}
+ selectedGenres={selectedGenres}
+ setSelectedGenres={setSelectedGenres}
+ movies={movies} category={category}
+ setCategory={setCategory}/>}
      
      />
 <Route path='/movies/:movieId' element={<MovieDetails/>}/>

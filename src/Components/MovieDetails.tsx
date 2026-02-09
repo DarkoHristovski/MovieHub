@@ -7,8 +7,10 @@ const MovieDetails = () =>{
 
     const [movie, setMovie]= useState<Movie | null>(null);
     const {movieId} = useParams<{movieId: string}>();
-const trailer= movie?.videos?.results?.filter(x=>x.type==='Trailer')[0];
-const actors = movie?.credits?.cast.filter(x=>x.known_for_department==='Acting').slice(0,5);
+const trailer= movie?.videos?.results?.find(x=>x.type==='Trailer' && x.site==="YouTube");
+const actors = movie?.credits?.cast
+  ?.filter(x => x.known_for_department === 'Acting')
+  ?.slice(0, 5) ?? [];
 console.log(trailer)
     useEffect(()=>{
         if (!movieId) return;
@@ -36,7 +38,9 @@ console.log(trailer)
         } alt="" />
         
         <div className="w-[70%] h-[500px] object-cover rounded-lg shadow-lg">
-        <iframe className="rounded-lg shadow-lg" width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          {trailer ? <iframe className="rounded-lg shadow-lg" width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                   :<div>No trailer is available</div>
+}
         </div>
         </div>
 <section className="max-w-[1280px] mx-auto px-4 mt-10">
