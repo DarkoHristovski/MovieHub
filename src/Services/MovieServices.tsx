@@ -50,24 +50,17 @@ console.log(error)
 }
 
 export const getMoviesByCategories = async(category:MovieCategory, page:number) =>{
- 
 try{
-
   const response = await fetch(`${baseUrl}/movie/${category}?language=en-US&page=${page}`,
     options);
-
    if(!response.ok){
     throw new Error('Failed')
    }
-
    const result = await response.json();
-
 return result;
 }catch(error){
   console.log(error)
 }
-
-
 }
 
 
@@ -90,15 +83,29 @@ console.log(error)
 
 }
 
-export const discoverMovie = async(category:MovieCategory, genres:number[]) => {
+export const getMovies = async(category:MovieCategory, page:number, genreIds:number[]=[]):promise<MovieResponse | undefined> => {
 
 try{
-  const genreParam = genres.join(",");
-  const response = await fetch(`${baseUrl}/discover/movie?with_genres=${genreParam}&sort_by=popularity.desc`,options)
+
+  let url :string= '';
+  if (genreIds.length > 0) {
+    url = `${baseUrl}/discover/movie?with_genres=${genreIds.join(',')}&language=en-US&page=${page}&sort_by=popularity.desc`;
+  } else {
+    // класична категорија
+    url = `${baseUrl}/movie/${category}?language=en-US&page=${page}`;
+  }
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error("Failed to fetch movies");
+  }
+
   const result = await response.json();
+
   return result;
+
 }catch(error){
 console.log(error);
+return undefined
 }
 
 

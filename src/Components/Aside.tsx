@@ -12,6 +12,7 @@ type AsideProps ={
     genres:Genre[],
     selectedGenres:number[];
     setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
+  
 }
 
 const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres}:AsideProps) =>{
@@ -32,8 +33,12 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
       ]
 
       const toggleGenre = (id: number) => {
-        setSelectedGenres(prev => prev[0] === id ? [] : [id]);
-    };
+        setSelectedGenres(prev =>
+          prev.includes(id)
+            ? prev.filter(g => g !== id)
+            : [...prev, id]
+        );
+      };
     return(
         <>
 <div>
@@ -43,6 +48,11 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
 <h3 className="px-4 text-sm font-semibld text-gray-400">
     Categories
 </h3>
+
+
+
+
+
 {movieCategories.map(x=>(
 
     <button

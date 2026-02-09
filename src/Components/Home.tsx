@@ -12,9 +12,9 @@ type HomeProps = {
     selectedGenres: number[];
     setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
     setPage: React.Dispatch<React.SetStateAction<number>>;
-    page:number
-  };
+    page:number;
   
+}
 
 
 const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page}:HomeProps) =>{
