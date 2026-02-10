@@ -54,7 +54,6 @@ function App() {
  setSelectedGenres={setSelectedGenres}
  movies={movies} category={category}
  setCategory={setCategory}/>}
-     
      />
 <Route path='/movies/:movieId' element={<MovieDetails/>}/>
 </Routes>

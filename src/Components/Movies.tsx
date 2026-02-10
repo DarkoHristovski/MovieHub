@@ -21,8 +21,8 @@ const Movies = ({movies, setPage,page}:MovieProps) =>{
 
     return(
       <>
-      <section className="container py-8">
-        <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="">
+        <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-6 gap-6 mb-3 mt-[20px]">
         {
         movies.map(x => <MovieList key={x.id} movies={x} 
         />)}
