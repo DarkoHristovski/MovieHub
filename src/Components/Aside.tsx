@@ -41,6 +41,7 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
       };
     return(
         <>
+        <aside className="w-[20%] border-r border-black">
 <div>
 <h2>Logo</h2>
 </div>
@@ -48,10 +49,6 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
 <h3 className="px-4 text-sm font-semibld text-gray-400">
     Categories
 </h3>
-
-
-
-
 
 {movieCategories.map(x=>(
 
@@ -71,22 +68,23 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
 )
 )}
 </div>
-<div className="flex flex-wrap gap-2">
+<div className="flex flex-col items-baseline w-full gap-[10px]">
       {genres.map(g => (
         <button
           key={g.id}
           onClick={() => toggleGenre(g.id)}
           className={`
-            px-3 py-1 rounded-full text-sm
+            py-[20px] pl-[10px] border-t border-black w-full
             ${selectedGenres.includes(g.id)
               ? "bg-blue-600 text-white"
-              : "bg-gray-200 text-gray-700"}
+              : ''}
           `}
         >
           {g.name}
         </button>
       ))}
     </div>
+    </aside>
 </>
 
     )
