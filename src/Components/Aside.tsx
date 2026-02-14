@@ -45,7 +45,7 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
 <div>
 <h2>Logo</h2>
 </div>
-<div className="space-y-2">   
+<div className="shrink-0 py-5 border-y border-[rgba(0,0,0,0.12)]">   
 <h3 className="px-4 text-sm font-semibld text-gray-400">
     Categories
 </h3>
@@ -55,7 +55,7 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
     <button
     onClick={()=>setCategory(x.value)}
     className={
-        `cursor-pointer flex items-center gap-3 w-full px-4 py-2 rounded-lg text-left transition
+        `cursor-pointer flex items-center gap-3 w-full px-4 py-2 text-left transition
         ${category===x.value
             ? "bg-blue-100 text-blue-700"
             : "hover:bg-gray-100 text-gray-700"
@@ -68,16 +68,16 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
 )
 )}
 </div>
-<div className="flex flex-col items-baseline w-full gap-[10px]">
+<div className="flex flex-col items-baseline w-full">
       {genres.map(g => (
         <button
           key={g.id}
           onClick={() => toggleGenre(g.id)}
           className={`
-            py-[20px] pl-[10px] border-t border-black w-full
+            cursor-pointer flex items-center gap-3 w-full px-4 py-2 text-left transition
             ${selectedGenres.includes(g.id)
-              ? "bg-blue-600 text-white"
-              : ''}
+              ? "bg-blue-100 border border-white text-blue-700"
+            : "hover:bg-gray-100 text-gray-700"}
           `}
         >
           {g.name}

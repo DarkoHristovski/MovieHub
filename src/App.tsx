@@ -5,7 +5,8 @@ import type { Movie, Genre } from './types/Movie';
 import { MovieCategory } from "./types/Movie";
 import Home  from './Components/Home';
 import { Routes, Route } from 'react-router-dom';
-import MovieDetails from '../src/Components/MovieDetails'
+import MovieDetails from '../src/Components/MovieDetails' 
+import Header from './Components/Header';
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -44,6 +45,7 @@ function App() {
   
   return (
     <>
+    <Header/>
 <Routes>
 <Route path="/" element={<Home
  setPage={setPage}
