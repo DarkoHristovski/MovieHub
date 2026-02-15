@@ -16,6 +16,8 @@ function App() {
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
 
+
+
   useEffect(()=>{
    
     const loadMovies = async () =>{
@@ -50,6 +52,7 @@ function App() {
 <Route path="/" element={<Home
  setPage={setPage}
  page={page}
+ totalPages={totalPages}
  genres={genres}
  setHandleCategory={handleCategoryChange}
  selectedGenres={selectedGenres}
