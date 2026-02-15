@@ -3,20 +3,25 @@ import type { Movie } from '../types/Movie';
 import PaginationButton from './PaginationButton'
 
   type MovieProps = {
-    movies: Movie[]; // vo React props obično koristime lowercase
+    movies: Movie[];
     setPage: React.Dispatch<React.SetStateAction<number>>;
     page:number
+    totalPages:number;
   };
 
 
 
-const Movies = ({movies, setPage,page}:MovieProps) =>{
+const Movies = ({movies, setPage,page, totalPages}:MovieProps) =>{
   const nextHandle = () =>{
     setPage((page)=>page+1)
   }
 
   const PrevHandle = () =>{
     setPage((page)=>page-1)
+  }
+
+  const lastPage = () =>{
+    setPage(totalPages)
   }
 
     return(
@@ -38,8 +43,9 @@ const Movies = ({movies, setPage,page}:MovieProps) =>{
   <PaginationButton disabled>
     {page}
   </PaginationButton>
+ 
 
-  <PaginationButton onClick={nextHandle}>
+  <PaginationButton onClick={nextHandle} disabled={page>=lastPage}>
     Next
   </PaginationButton>
 </div>

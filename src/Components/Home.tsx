@@ -13,19 +13,20 @@ type HomeProps = {
     setSelectedGenres: React.Dispatch<React.SetStateAction<number[]>>;
     setPage: React.Dispatch<React.SetStateAction<number>>;
     page:number;
-  
+    totalPages:number;
+    setHandleCategory: (cat: MovieCategory) => void; 
 }
 
 
-const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page}:HomeProps) =>{
+const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page, totalPages}:HomeProps) =>{
 return(
     
-        <div className="flex">
+        <div className="flex h-screen">
     <Aside genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} category={category} setCategory={setCategory} />
-    <main className="w-[80%] ">
+    <main className="w-[80%] h-full overflow-auto">
     <div className="container py-8">
         <Hero movies={movies}/>
-        <Movies movies={movies} page={page} setPage={setPage}/>
+        <Movies movies={movies} totalPages={totalPages} page={page} setPage={setPage}/>
         </div>
     </main>
     </div>
