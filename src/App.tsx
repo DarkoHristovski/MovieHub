@@ -47,7 +47,7 @@ function App() {
   
   return (
     <>
-    <Header/>
+    <Header setMovies={setMovies}/>
 <Routes>
 <Route path="/" element={<Home
  setPage={setPage}
