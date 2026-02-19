@@ -110,3 +110,19 @@ return undefined
 
 
 }
+
+
+// movieService.ts
+export const searchMovies = async (query: string): Promise<MovieResponse | undefined> => {
+  try {
+    const url = `${baseUrl}/search/movie?query=${encodeURIComponent(query)}&language=en-US&page=1&include_adult=false`;
+    const response = await fetch(url, options);
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+    const result: MovieResponse = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
+};

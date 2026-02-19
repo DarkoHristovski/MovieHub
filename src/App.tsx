@@ -15,11 +15,15 @@ function App() {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([])
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [isSearching, setIsSearching] = useState(false);
 
 
 
   useEffect(()=>{
-   
+    if (isSearching) return; 
+
+
+
     const loadMovies = async () =>{
       const res = await movieService.getMovies(category,page, selectedGenres);
 
@@ -28,7 +32,7 @@ function App() {
       setTotalPages(res.total_pages);
     };
     loadMovies();
-  },[category,page,selectedGenres])
+  },[category,page,selectedGenres, isSearching])
 
   useEffect(() => {
     const loadGenres = async () => {
@@ -47,7 +51,7 @@ function App() {
   
   return (
     <>
-    <Header/>
+    <Header setIsSearching={setIsSearching} setMovies={setMovies}/>
 <Routes>
 <Route path="/" element={<Home
  setPage={setPage}
