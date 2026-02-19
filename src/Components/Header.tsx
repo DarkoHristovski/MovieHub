@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { searchMovies } from "../Services/MovieServices";
+import type { Movie } from '../types/Movie';
 
 type HeaderProps ={
-    setMovies: (cat: MovieCategory) => void;
+  setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  setIsSearching: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header = ({setMovies}:HeaderProps) =>{
+const Header = ({setMovies, setIsSearching}:HeaderProps) =>{
     const [search, setSearch] = useState<string>('');
     const [loading, setLoading] = useState(false);
 
@@ -13,19 +15,30 @@ const Header = ({setMovies}:HeaderProps) =>{
         setSearch(e.target.value);
       };
     
-      const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!search) return;
-    
+      
+      useEffect(()=>{
+
+        if (!search.trim()) {
+        setIsSearching(true);
+        return;
+      }
+  
+      const timer = setTimeout(async()=>{
         setLoading(true);
+        setIsSearching(true);
         const data = await searchMovies(search);
         if (data?.results) setMovies(data.results);
         setLoading(false);
-      };
+      }, 400);
+    
+     return () => clearTimeout(timer);
+      },[search, setMovies, setIsSearching])
+      
+      
     return(
 <header className="bg-[rgb(25,118,210)] py-5">
      <div className="logo"></div>
-     <form onSubmit={onSubmitHandler}
+     <form 
              className="mx-auto w-[200px] text-white placeholder-white border-b-2 border-white bg-none focus:outline-none focus:border-blue-500 py-2 px-1"
 
      >

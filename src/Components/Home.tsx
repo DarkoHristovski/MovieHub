@@ -1,5 +1,6 @@
 import Hero from "./Hero";
 import Aside from "./Aside";
+
 import Movies from "./Movies";
 import type { Movie, MovieCategory, Genre, } from "../types/Movie";
 
