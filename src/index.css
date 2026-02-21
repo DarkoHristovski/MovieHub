@@ -6,5 +6,5 @@
 
 /* ===== Global layout ===== */
 .container {
-    @apply max-w-[1380px] mx-auto;
+    @apply max-w-[1500px] mx-auto;
   }
