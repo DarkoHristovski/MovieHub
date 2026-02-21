@@ -22,10 +22,10 @@ type HomeProps = {
 const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page, totalPages}:HomeProps) =>{
 return(
     
-        <div className="flex h-screen">
+        <div className="flex container py-8 h-screen">
     <Aside genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} category={category} setCategory={setCategory} />
-    <main className="w-[80%] h-full overflow-auto">
-    <div className="container py-8">
+    <main className="w-[70%] pl-[30px] h-full overflow-auto">
+    <div className="">
         <Hero movies={movies}/>
         <Movies movies={movies} totalPages={totalPages} page={page} setPage={setPage}/>
         </div>
