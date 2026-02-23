@@ -41,8 +41,24 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
       };
     return(
         <>
-        <aside className="h-full overflow-auto w-[20%] border-r border-black">
-<div className="shrink-0 py-5 border-y border-[rgba(0,0,0,0.12)]">   
+  <aside className="min-h-screen w-[20%]
+  border
+  border-[#e3e3e3]
+  rounded-[var(--imageBorderRadius)]
+  flex
+  flex-wrap
+  shadow-[0_2px_8px_rgba(0,0,0,0.1)]
+  border
+  border-[#eee]
+  pt-[14px]
+  pr-[16px]
+  pb-[16px]
+  pl-[16px]
+  rounded-[10px]
+  bg-white
+  border-[rgba(0,0,0,0.12)]
+  justify-between">
+<div className="shrink-0 py-5 border-y w-[100%] ">   
 <h3 className="px-4 text-sm font-semibld text-gray-400">
     Categories
 </h3>

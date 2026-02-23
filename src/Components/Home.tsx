@@ -1,4 +1,4 @@
-import Hero from "./Hero";
+
 import Aside from "./Aside";
 
 import Movies from "./Movies";
@@ -16,18 +16,19 @@ type HomeProps = {
     page:number;
     totalPages:number;
     setHandleCategory: (cat: MovieCategory) => void; 
+    loading:boolean
 }
 
 
-const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page, totalPages}:HomeProps) =>{
+const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page, totalPages, loading}:HomeProps) =>{
 return(
     
-        <div className="flex container py-8 h-screen">
+        <div className="flex container pt-[80px] pb-[800px] h-screen">
     <Aside genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} category={category} setCategory={setCategory} />
-    <main className="w-[70%] pl-[30px] h-full overflow-auto">
+    <main className="w-[70%] pl-[30px] h-full">
     <div className="">
-        <Hero movies={movies}/>
-        <Movies movies={movies} totalPages={totalPages} page={page} setPage={setPage}/>
+        
+        <Movies movies={movies} loading={loading} totalPages={totalPages} page={page} setPage={setPage}/>
         </div>
     </main>
     </div>
