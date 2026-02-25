@@ -23,13 +23,13 @@ type HomeProps = {
 const Home = ({movies, category,setCategory,genres, selectedGenres, setSelectedGenres, setPage,page, totalPages, loading}:HomeProps) =>{
 return(
     
-        <div className="flex container pt-[80px] pb-[800px] h-screen">
+        <div className="flex container pt-[80px]  h-screen">
     <Aside genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} category={category} setCategory={setCategory} />
-    <main className="w-[70%] pl-[30px] h-full">
-    <div className="">
+    <main className="overflow-x-hidden flex-1 min-w-0 pl-[30px] h-full">
+   
         
         <Movies movies={movies} loading={loading} totalPages={totalPages} page={page} setPage={setPage}/>
-        </div>
+        
     </main>
     </div>
   
