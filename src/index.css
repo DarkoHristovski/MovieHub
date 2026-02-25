@@ -5,6 +5,15 @@
 
 
 /* ===== Global layout ===== */
-.container {
-    @apply max-w-[1500px] mx-auto;
+
+  .container {
+    @apply w-full max-w-[1500px] mx-auto;
+  }
+
+  html {
+    @apply h-full;
+  }
+  
+  body {
+    @apply min-h-full overflow-hidden;
   }

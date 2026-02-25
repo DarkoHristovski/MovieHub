@@ -28,8 +28,6 @@ return result;
     console.log(error);
     return undefined;
 }
-
-
 }
 
 export const getMovie = async(id:string): Promise<Movie | undefined> =>{
@@ -83,7 +81,7 @@ console.log(error)
 
 }
 
-export const getMovies = async(category:MovieCategory, page:number, genreIds:number[]=[]):promise<MovieResponse | undefined> => {
+export const getMovies = async(category:MovieCategory, page:number, genreIds:number[]=[]):Promise<MovieResponse | undefined> => {
 
 try{
 

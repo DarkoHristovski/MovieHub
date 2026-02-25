@@ -37,7 +37,7 @@ const Movies = ({ movies, setPage, page, totalPages, loading }: MovieProps) => {
           )}
 
         </div>
-      </section>
+      
 
       {!loading && (
         <div className="flex justify-center items-center gap-4 mt-6">
@@ -54,6 +54,7 @@ const Movies = ({ movies, setPage, page, totalPages, loading }: MovieProps) => {
           </PaginationButton>
         </div>
       )}
+      </section>
     </>
   );
 };
