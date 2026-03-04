@@ -1,5 +1,6 @@
 import { MovieCategory} from "../types/Movie";
 import type { Genre } from '../types/Movie';
+import AccordionItem from '../Components/AccordionItem'
 
 type CategoryItem ={
 label:string,
@@ -40,37 +41,31 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
         );
       };
     return(
-        <>
-  <aside className="w-[260px] flex-shrink-0
-    min-h-screen
-    border border-[#eee]
-    rounded-[10px]
-    bg-white
-    pt-[14px] pr-[16px] pb-[16px] pl-[16px]
-    shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
-<div className="shrink-0 py-5 border-y w-[100%] ">   
-<h3 className="px-4 text-sm font-semibld text-gray-400">
-    Categories
-</h3>
+  <>
+<aside className="w-[260px]">
+<div className="shrink-0 py-5 w-[100%] ">   
 
-{movieCategories.map(x=>(
-
-    <button
-    onClick={()=>setCategory(x.value)}
-    className={
-        `cursor-pointer flex items-center gap-3 w-full px-4 py-2 text-left transition
-        ${category===x.value
+<AccordionItem title="Categories">
+  <div className="flex flex-col w-full">
+    {movieCategories.map(x => (
+      <button
+        key={x.value}
+        onClick={() => setCategory(x.value)}
+        className={`
+          cursor-pointer flex items-center gap-3 w-full px-4 py-2 text-left transition
+          ${category === x.value
             ? "bg-blue-100 text-blue-700"
-            : "hover:bg-gray-100 text-gray-700"
-        }
-        `
-    } key={x.value}>
-       {x.label}
+            : "hover:bg-gray-100 text-gray-700"}
+        `}
+      >
+        {x.label}
+      </button>
+    ))}
+  </div>
+</AccordionItem>
 
-    </button>
-)
-)}
 </div>
+<AccordionItem title="Genres">
 <div className="flex flex-col items-baseline w-full">
       {genres.map(g => (
         <button
@@ -87,6 +82,7 @@ const Aside = ({category, setCategory, genres, selectedGenres, setSelectedGenres
         </button>
       ))}
     </div>
+    </AccordionItem>
     </aside>
 </>
 
