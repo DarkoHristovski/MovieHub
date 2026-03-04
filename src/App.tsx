@@ -58,7 +58,7 @@ function App() {
   
   return (
     <>
-    <Header setIsSearching={setIsSearching} allMovies={allMovies} movies={movies} setMovies={setMovies}/>
+<Header setIsSearching={setIsSearching} allMovies={allMovies} movies={movies} setMovies={setMovies}/>
 <Routes>
 <Route path="/" element={<Home
  setPage={setPage}

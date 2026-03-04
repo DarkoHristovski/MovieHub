@@ -15,5 +15,5 @@
   }
   
   body {
-    @apply min-h-full overflow-hidden;
+    @apply min-h-full 
   }
