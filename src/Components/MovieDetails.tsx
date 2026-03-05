@@ -5,8 +5,8 @@ import * as movieService from '../Services/MovieServices';
 
 const MovieDetails = () =>{
 
-    const [movie, setMovie]= useState<Movie | null>(null);
-    const {movieId} = useParams<{movieId: string}>();
+const [movie, setMovie]= useState<Movie | null>(null);
+const {movieId} = useParams<{movieId: string}>();
 const trailer= movie?.videos?.results?.find(x=>x.type==='Trailer' && x.site==="YouTube");
 const actors = movie?.credits?.cast
   ?.filter(x => x.known_for_department === 'Acting')
@@ -23,14 +23,14 @@ console.log(trailer)
         return <div>Loading...</div>;
       }
     return(
-        <div className="container">
+        <div className="container py-[70px] ">
         
         
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
         <h1 className="font-dm font-bold text-[36px] leading-[36px] tracking-[0]">{movie.title}</h1>
         <p>⭐ {movie.vote_average}/10 ({movie.vote_count})</p>
         </div>
-        <div className="flex mt-6 mb-6 gap-3">
+        <div className="flex mt-3 mb-6 gap-3">
             <img className="w-[30%] h-[500px] object-cover rounded-lg shadow-lg" src={
           movie.poster_path?
           `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
@@ -43,7 +43,7 @@ console.log(trailer)
 }
         </div>
         </div>
-<section className="max-w-[1280px] mx-auto px-4 mt-10">
+<section className=" mx-auto px-4 mt-10">
       <div className="grid grid-cols-[200px_1fr] gap-y-6 text-[15px]">
         {/* GENRES */}
         <p>Genres</p>
