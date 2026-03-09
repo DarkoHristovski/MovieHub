@@ -37,8 +37,6 @@ const Movies = ({ movies, setPage, page, totalPages, loading }: MovieProps) => {
           )}
 
         </div>
-      
-
       {!loading && (
         <div className="flex justify-center items-center gap-4 mt-6">
           <PaginationButton onClick={PrevHandle} disabled={page <= 1}>
