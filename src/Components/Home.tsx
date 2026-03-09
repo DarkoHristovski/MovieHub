@@ -26,10 +26,7 @@ return(
         <div className="py-[60px] container grid grid-cols-1 md:grid-cols-[256px_1fr] gap-6">
     <Aside genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} category={category} setCategory={setCategory} />
     <main className="">
-   
-        
-        <Movies movies={movies} loading={loading} totalPages={totalPages} page={page} setPage={setPage}/>
-        
+        <Movies movies={movies} loading={loading} totalPages={totalPages} page={page} setPage={setPage}/>  
     </main>
     </div>
   
