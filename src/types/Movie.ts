@@ -72,5 +72,4 @@ export type Crew = {
   
   export type MovieCategory =
     (typeof MovieCategory)[keyof typeof MovieCategory];
-
  
