@@ -64,10 +64,13 @@ export type Crew = {
   };
 
 
-  export enum MovieCategory {
-    Popular = "popular",
-    TopRated = "top_rated",
-    Upcoming = "upcoming"
-  }
+  export const MovieCategory = {
+    Popular: "popular",
+    TopRated: "top_rated",
+    Upcoming: "upcoming"
+  } as const;
+  
+  export type MovieCategory =
+    (typeof MovieCategory)[keyof typeof MovieCategory];
 
  
