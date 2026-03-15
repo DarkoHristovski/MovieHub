@@ -91,7 +91,7 @@ console.log(trailer)
         {/* PRODUCTION */}
         <p>Production Companies</p>
         <p>
-          {movie.production_companies.map(p => p.name).join(" • ")}
+          {movie.production_companies?.map(p => p.name).join(" • ")}
         </p>
 
       </div>

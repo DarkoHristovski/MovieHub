@@ -4,7 +4,12 @@ export type Movie = {
     poster_path: string | null;
     overview:string,
     tagline:string,
-   
+    backdrop_path?: string
+  production_companies?: {
+    id: number
+    name: string
+    logo_path: string | null
+  }[]
     vote_avarage:number,
     vote_count: number;
     release_date:string,
@@ -38,6 +43,7 @@ name:string
 export type Cast = {
   id: number;
   name: string;
+  original_name: string;
   character: string;
   profile_path: string | null;
   known_for_department: string;
