@@ -16,7 +16,7 @@ MovieHub is a modern web application for discovering and exploring movies, power
 
 ## Demo
 
-[Live Demo](https://moviehub.netlify.app)  
+[Live Demo](https://darkos-movie-app.netlify.app/)  
 
 ---
 
