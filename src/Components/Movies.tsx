@@ -11,8 +11,8 @@ type MovieProps = {
   loading: boolean;
 };
 
-const Movies = ({ movies, setPage, page, totalPages, loading }: MovieProps) => {
 
+const Movies = ({ movies, setPage, page, totalPages, loading }: MovieProps) => {
   const nextHandle = () => {
     setPage((page) => page + 1);
   };
