@@ -64,12 +64,8 @@ export type Crew = {
   };
 
 
-  export const MovieCategory = {
-    Popular: "popular",
-    TopRated: "top_rated",
-    Upcoming: "upcoming"
-  } as const;
-  
   export type MovieCategory =
-    (typeof MovieCategory)[keyof typeof MovieCategory];
+  | "popular"
+  | "top_rated"
+  | "upcoming";
  
